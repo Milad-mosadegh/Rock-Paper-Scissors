@@ -7,10 +7,12 @@ const game = () => {
         const playBtn = document.querySelector('.intro button');
         const introScreen = document.querySelector('.intro');
         const match = document.querySelector('.match');
+        const resetBtn = document.querySelector('.resetButton')
 
         playBtn.addEventListener("click", () => {
             introScreen.classList.add('fadeout');
             match.classList.add('fadein')
+            resetBtn.classList.add("fadein")
         });
     }
 
@@ -44,9 +46,6 @@ const game = () => {
                     // here we call compairHands
                     compairHands(this.textContent, computerChoice);
                 }, 2000)
-
-
-
 
                 // Animation
                 playerHand.style.animation = 'shakePlayer 2s ease'
@@ -121,9 +120,28 @@ const game = () => {
     }
 
 
+    const resetGame = () => {
+        const resetBtn = document.querySelector('.reset')
+        const playerHand = document.querySelector('.player-hand')
+        const computerHand = document.querySelector('.computer-hand')
+        const playerScore = document.querySelector('.player-score p');
+        const computerScore = document.querySelector('.computer-score p');
+
+        resetBtn.addEventListener('click', function () {
+            playerHand.src = `./assets/rock.png`;
+            computerHand.src = `./assets/rock.png`;
+            playerScore.textContent = 0;
+            computerScore.textContent = 0;
+
+
+        })
+    }
+
+
     // call all the function
     startGame();
     playMatch();
+    resetGame();
 
 }
 
