@@ -63,6 +63,8 @@ const game = () => {
 
         playerScore.textContent = pScore;
         computerScore.textContent = cScore;
+        message();
+        resetGame();
     }
 
     const compairHands = (playerChoice, computerChoice) => {
@@ -124,17 +126,23 @@ const game = () => {
         const resetBtn = document.querySelector('.reset')
         const playerHand = document.querySelector('.player-hand')
         const computerHand = document.querySelector('.computer-hand')
-        const playerScore = document.querySelector('.player-score p');
-        const computerScore = document.querySelector('.computer-score p');
+        const playerScore = document.querySelectorAll('.player-score p');
+        const computerScore = document.querySelectorAll('.computer-score p');
 
         resetBtn.addEventListener('click', function () {
             playerHand.src = `./assets/rock.png`;
             computerHand.src = `./assets/rock.png`;
-            playerScore.textContent = 0;
-            computerScore.textContent = 0;
-
-
         })
+    }
+
+    const message = () => {
+        if (pScore === 3) {
+            alert("Player wins...")
+            resetGame();
+        } if (cScore === 3) {
+            alert("Computer wins")
+            resetGame();
+        }
     }
 
 
@@ -142,7 +150,7 @@ const game = () => {
     startGame();
     playMatch();
     resetGame();
-
+    message();
 }
 
 
